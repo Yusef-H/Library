@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script  src="c.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>Library</header>
+    <button data-modal-target="#modal" class = "add">
+        <h1 class = "add">Add a New Book</h1>
+    </button>
+    
+    <div class="modal">
+        <div class="modal-header">
+            <h2>Add a New Book</h2>
+            <button data-exit-button class="exit">&times;</button>
+        </div>
+        <input id="input" class="title" placeholder="Enter Title">
+        <br>
+        <input id="input" class="name" placeholder="Enter Author Name">
+        <br>
+        <input id="input" class="number" placeholder="Enter Number Of Pages">
+        <br>
+        <div id="radio">
+            <p>Have You Read The Book?<p>
+            <input type="radio" id="op1" name="yes-no" value="Already Read" unchecked>Yes</input>
+            <br>
+            <input type="radio" id="op2" name='yes-no' value="Not Read yet" unchecked>No</input>
+        </div>
+
+        <button class="submit">Add Book</button>  
+    </div>
+    
+
+
+    <div  id="overlay"></div>
+
+    <div class="books-container">
+        
+    </div>
+    
+    
+</body>
+
+
+</html>

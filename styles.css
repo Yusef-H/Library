@@ -1,0 +1,157 @@
+
+html{
+    background: url(library.jpg) no-repeat center center fixed; 
+    background-size: cover;
+    background-position: center;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;  
+}
+
+header{
+    border-radius: 8px;
+    padding: 0;
+    width: 100%;
+    font-size: 120px;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(212, 230, 247);
+    border: 2px solid white; 
+}
+
+button.add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 30px;
+    background-color: rgb(212, 230, 247);
+    width: 300px;
+    height: 80px;
+    color:black;
+    border: 2px solid white;
+}
+
+h1.add{
+    font-size: 30px;
+    border: none;
+    background: none;
+}
+
+/* Modal CSS */
+.modal{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    padding: 10px;
+    
+}
+.modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+.modal .title{
+    margin-top: 28px;
+}
+.modal-header h2{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.modal-header .exit{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.modal-header .exit:hover{
+    background-color: rgb(197, 195, 195);
+    border-radius: 8px;
+}
+#input{
+    font-size: 25px;
+}
+p{
+    font-size: 25px;
+}
+.modal .submit{
+    background-color: rgb(12, 130, 209);
+    border: 1px solid rgb(97, 96, 96);
+    border-radius: 6px;
+    font-size: 1.25rem;
+    color: white;
+    width: 130px;
+    align-self: center;
+}
+.modal .submit:hover{
+    border: 1px solid black;
+    font-size: 1.26rem;
+}
+#overlay{
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 200ms ease-in-out;
+    background-color: rgba(0,0,0,.5);
+    pointer-events: none;
+}
+#overlay.active{
+    pointer-events: all;
+    opacity: 1;
+
+}
+
+
+.card{
+    width: 300px;
+    height: 300px;
+    
+    border-radius: 8px;
+    background-image: url(book.png);
+    background-size: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    
+}
+.card:hover{
+    width: 310px;
+    height: 310px;
+}
+.books-container{
+    display: grid;
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+}
+
