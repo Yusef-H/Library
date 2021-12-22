@@ -130,15 +130,17 @@ p{
     width: 300px;
     height: 300px;
     
+    /* border: 2px solid red; */
+
     border-radius: 8px;
     background-image: url(book.png);
-    background-size: 200px;
+    background-size: 204px;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
+    font-size: 11px;
     font-family: Arial, sans-serif;
     color: rgb(0, 0, 0);
     
@@ -153,5 +155,22 @@ p{
     row-gap: 20px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     
+}
+
+.remove{
+    font-size: 11px;
+    background-color: black;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
+}
+
+.readBtn{
+    margin-top: 3px ;
+    font-size: 11px;
+    background-color: black;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
 }
 

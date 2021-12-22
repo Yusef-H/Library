@@ -18,7 +18,14 @@ let example2 = new Book("This House is Haunted","John Boyne",333,"Already Read")
 myLibrary.push(example2);
 updateLibrary();
 
-
+Book.prototype.readToggle = function(){
+    if(this.isRead == "Already Read"){
+        this.isRead = "Not Read Yet";
+    }
+    else{
+        this.isRead = "Already Read";
+    }
+}
 
 
 
@@ -99,12 +106,33 @@ function updateLibrary(){
         info.style.backgroundColor = "transparent";
         info.style.width = "120px";
         
-        
         info.innerHTML =  book.title +"<br> By: <br>"+ book.author
                         + "<br><br> -Pages: " + book.pages + "<br><br> -Status: <br>" + book.isRead;
 
         newCard.appendChild(info);
-        console.log(book);
+        newCard.style.display = "flex";
+        newCard.style.flexDirection = "column";
+
+        let removeButton = document.createElement('button');
+        removeButton.classList = "remove";
+        removeButton.innerHTML = "Remove";
+        newCard.appendChild(removeButton);
+        removeButton.addEventListener("click", function(){
+            booksContainer.removeChild(newCard); 
+        })
+
+        let readButton = document.createElement('button');
+        readButton.classList = "readBtn";
+        readButton.innerHTML = "Change Read Status";
+        newCard.appendChild(readButton);
+        readButton.addEventListener('click', function(){
+            book.readToggle();
+            info.innerHTML =  book.title +"<br> By: <br>"+ book.author
+                        + "<br><br> -Pages: " + book.pages + "<br><br> -Status: <br>" + book.isRead;
+        })
+
+
+        
         booksContainer.appendChild(newCard);
         myLibrary.pop(book);
         
