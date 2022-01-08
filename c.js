@@ -1,16 +1,8 @@
 const booksContainer = document.querySelector(".books-container");
 
-// function Book(title, author, pages, isRead){
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.isRead = isRead;
-//     this.info = function(){
-//         return title + " by " + author + ", " + pages +
-//                " pages, " + isRead;
-//     }
-// }
-
+/**
+ * Book Class
+ */
 class Book{
     constructor(title, author, pages, isRead){
         this.title = title;
@@ -24,6 +16,10 @@ class Book{
                        " pages, " + isRead;
     }
 }
+
+/**
+ * Creating the Library array and adding two examples
+ */
 let myLibrary = [];
 let example1 = new Book("The Hobbit", "J.R.R. Tolkien" , 310, "Not Read Yet");
 myLibrary.push(example1);
@@ -31,6 +27,7 @@ updateLibrary();
 let example2 = new Book("This House is Haunted","John Boyne",333,"Already Read");
 myLibrary.push(example2);
 updateLibrary();
+
 
 Book.prototype.readToggle = function(){
     if(this.isRead == "Already Read"){
@@ -46,7 +43,9 @@ Book.prototype.readToggle = function(){
 
 
 
-
+/**
+ * Creating the modal for adding new book.
+ */
 const openModalButtons = document.querySelectorAll('[data-modal-target]'); // Can be used For Multiple modals
 const closeModalButtons = document.querySelectorAll('[data-exit-button]');
 const overlay = document.getElementById("overlay");
@@ -79,6 +78,9 @@ function closeModal(modal){
     overlay.classList.remove('active');
 }
 
+/**
+ * Saves the book information after submitting it.
+ */
 const submit = document.querySelector('.submit');
 submit.addEventListener('click', function(title, name, number, read){
     title = document.querySelector(".title").value;
@@ -89,18 +91,20 @@ submit.addEventListener('click', function(title, name, number, read){
     }
     else{
         read = document.getElementById("op2").value;
-        console.log(read);
     }
 
     addBook(title, name, number, read);
+    clearBookInfo();
 
+})
+
+function clearBookInfo(){
     document.querySelector(".title").value = "";
     document.querySelector('.name').value = "";
     document.querySelector('.number').value = "";
     document.getElementById("op1").checked = false;
     document.getElementById("op2").checked = false;
-
-})
+}
 
 
 
