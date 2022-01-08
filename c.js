@@ -38,18 +38,12 @@ Book.prototype.readToggle = function(){
     }
 }
 
-
-
-
-
-
 /**
  * Creating the modal for adding new book.
  */
 const openModalButtons = document.querySelectorAll('[data-modal-target]'); // Can be used For Multiple modals
 const closeModalButtons = document.querySelectorAll('[data-exit-button]');
 const overlay = document.getElementById("overlay");
-
 openModalButtons.forEach(button =>{
     button.addEventListener('click', ()=>{
         const modal = document.querySelector(".modal");
@@ -57,7 +51,6 @@ openModalButtons.forEach(button =>{
         openModal(modal);
     })
 })
-
 closeModalButtons.forEach(button =>{
     button.addEventListener('click', ()=>{
         const modal = document.querySelector('.modal');
@@ -65,13 +58,11 @@ closeModalButtons.forEach(button =>{
         closeModal(modal);
     })
 })
-
 function openModal(modal){
     if(modal == null) return;
     modal.classList.add('active');
     overlay.classList.add('active');
 }
-
 function closeModal(modal){
     if(modal == null) return;
     modal.classList.remove('active');
@@ -79,7 +70,9 @@ function closeModal(modal){
 }
 
 /**
- * Saves the book information after submitting it.
+ * Handles all the steps from when the book gets submitted. 
+ * Adds the book to the library, resets the saved information and updates
+ * the library.
  */
 const submit = document.querySelector('.submit');
 submit.addEventListener('click', function(title, name, number, read){
@@ -95,9 +88,13 @@ submit.addEventListener('click', function(title, name, number, read){
 
     addBook(title, name, number, read);
     clearBookInfo();
+    updateLibrary();
 
 })
-
+/**
+ * Clears book information after submitting it and 
+ * adding it to the Library
+ */
 function clearBookInfo(){
     document.querySelector(".title").value = "";
     document.querySelector('.name').value = "";
@@ -107,51 +104,51 @@ function clearBookInfo(){
 }
 
 
-
+/**
+ * Adds a new book to the Library.
+ */
 function addBook(title, name, number, read){
     let newBook = new Book(title, name, number, read);
     myLibrary.push(newBook);
-    updateLibrary();
 }
 
+
+/**
+ * Updates the library
+ */
 function updateLibrary(){
     myLibrary.forEach((book) => {
-        console.log(book);
-        let newCard = document.createElement("div");
-        newCard.classList = "card";
+
+        let newBook = document.createElement("div");
+        newBook.classList = "book";
         let info = document.createElement("h3");
-        info.style.borderRadius = "8px";
-        info.style.backgroundColor = "transparent";
-        info.style.width = "120px";
+        info.classList.add('book-info');
         
         info.innerHTML =  book.title +"<br> By: <br>"+ book.author
                         + "<br><br> -Pages: " + book.pages + "<br><br> -Status: <br>" + book.isRead;
 
-        newCard.appendChild(info);
-        newCard.style.display = "flex";
-        newCard.style.flexDirection = "column";
+        newBook.appendChild(info);
+        
 
         let removeButton = document.createElement('button');
         removeButton.classList = "remove";
         removeButton.innerHTML = "Remove";
-        newCard.appendChild(removeButton);
+        newBook.appendChild(removeButton);
         removeButton.addEventListener("click", function(){
-            booksContainer.removeChild(newCard); 
+            booksContainer.removeChild(newBook); 
         })
 
         let readButton = document.createElement('button');
         readButton.classList = "readBtn";
         readButton.innerHTML = "Change Read Status";
-        newCard.appendChild(readButton);
+        newBook.appendChild(readButton);
         readButton.addEventListener('click', function(){
             book.readToggle();
             info.innerHTML =  book.title +"<br> By: <br>"+ book.author
                         + "<br><br> -Pages: " + book.pages + "<br><br> -Status: <br>" + book.isRead;
         })
 
-
-        
-        booksContainer.appendChild(newCard);
+        booksContainer.appendChild(newBook);
         myLibrary.pop(book);
         
     })

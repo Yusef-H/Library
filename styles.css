@@ -126,11 +126,11 @@ p{
 }
 
 
-.card{
+.book{
     width: 300px;
     height: 300px;
     
-    /* border: 2px solid red; */
+    border: 2px solid red;
 
     border-radius: 8px;
     background-image: url(book.png);
@@ -138,11 +138,14 @@ p{
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 11px;
     font-family: Arial, sans-serif;
     color: rgb(0, 0, 0);
+
+    
     
 }
 .card:hover{
@@ -172,5 +175,10 @@ p{
     font-weight: bold;
     color: white;
     border-radius: 8px;
+}
+
+.book-info{
+    border-radius: 8px;
+    width: 120px;
 }
 
